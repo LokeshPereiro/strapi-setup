@@ -1,13 +1,14 @@
 "use client";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Header from "./_components/Header";
-import Footer from "./_components/Footer";
-import { ClerkProvider } from "@clerk/nextjs";
+const inter = Inter({ subsets: ["latin"] });
 import { CartContext } from "./_context/CartContext";
 import { useState } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import Header from "./_components/Header";
+import Footer from "./_components/Footer";
+
+import { ClerkProvider } from "@clerk/nextjs";
 
 // export const metadata = {
 //   title: "CalitosBoss",

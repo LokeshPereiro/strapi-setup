@@ -29,8 +29,14 @@ const addToCart = (data) => axiosClient.post("/carts", data);
 //Get User Cart Items (filtering by unique user email)
 const getUserCartItems = (email) =>
   axiosClient.get(
-    "/carts?populate[product][populate][0]=banner&filters[email][$eq]=" + email
+    "/carts?populate[products][populate][0]=banner&filters[email][$eq]=" + email
   );
+
+//Delete Cart Item
+const deleteCartItem = (id) => axiosClient.delete("/carts/" + id);
+
+//Create Order
+const createOrder = (data) => axiosClient.post("/orders", data);
 
 export default {
   getLatestProducts,
@@ -38,4 +44,6 @@ export default {
   getProductByCategory,
   addToCart,
   getUserCartItems,
+  deleteCartItem,
+  createOrder,
 };

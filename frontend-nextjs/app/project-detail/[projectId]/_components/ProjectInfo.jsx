@@ -1,5 +1,5 @@
 import { AlertOctagon, BadgeCheck, ShoppingCart } from "lucide-react";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import SkeltonProjectInfo from "./SkeltonProjectInfo";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
@@ -7,30 +7,29 @@ import { CartContext } from "./../../../_context/CartContext";
 import GlobalApi from "./../../../_utils/GlobalApi";
 
 function ProjectInfo({ product }) {
-  // console.log(product);
   const { user } = useUser();
   const router = useRouter();
   const { cart, setCart } = useContext(CartContext);
 
   //Use to Add Project/Product into Cart
-  const onAddToCartClick = () => {
+  const onAddToCartClick = async () => {
     if (!user) {
       router.push("/sign-in");
       return;
     } else {
-      //Logic to Add to Cart
+      //Strapi entry data template
       const data = {
         data: {
           userName: user.fullName,
           email: user.primaryEmailAddress.emailAddress,
-          product: product?.id,
+          products: product?.id,
         },
       };
       GlobalApi.addToCart(data).then(
         (resp) => {
-          // console.log("Add to Cart", resp);
           if (resp) {
-            setCart((cart) => [
+            // console.log("Item added", resp);
+            setCart([
               ...cart,
               {
                 id: resp?.data?.id,
@@ -45,6 +44,7 @@ function ProjectInfo({ product }) {
       );
     }
   };
+
   return (
     <div>
       {product ? (
@@ -76,7 +76,7 @@ function ProjectInfo({ product }) {
         text-primary font-medium
         mt-5"
           >
-            $ {product?.attributes?.pricing}
+            € {product?.attributes?.pricing}
           </h2>
           <button
             className="flex gap-2 p-3 

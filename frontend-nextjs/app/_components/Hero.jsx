@@ -9,15 +9,8 @@ function Hero() {
       >
         <div className="mx-auto max-w-xl text-center">
           <h1 className="text-3xl font-bold sm:text-5xl">
-            <strong className="text-primary font-bold">TubeGuruji</strong>{" "}
+            <strong className="text-primary font-bold">CarlitosBoss</strong>{" "}
             Marketplace<br></br>
-            Access Free &nbsp;
-            <strong
-              className="font-bold
-         text-primary sm:block"
-            >
-              Source Code & Assets{" "}
-            </strong>
           </h1>
 
           <p className="mt-4 sm:text-xl/relaxed">

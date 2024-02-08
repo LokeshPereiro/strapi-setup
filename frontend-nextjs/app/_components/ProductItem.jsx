@@ -38,7 +38,7 @@ function ProductItem({ product }) {
             )}
           </div>
           <h2 className="font-medium text-primary">
-            ${product.attributes?.pricing}
+            €{product.attributes?.pricing}
           </h2>
         </div>
       </div>

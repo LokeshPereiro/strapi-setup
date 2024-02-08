@@ -26,7 +26,7 @@ function ProductSection() {
     <div className=" px-10 md:px-20">
       {/* Latest product  */}
       <h2 className="font-bold text-[20px] my-3">
-        Brand New
+        All products
         <span
           className="font-normal text-[14px]
          float-right text-primary flex 
@@ -39,7 +39,7 @@ function ProductSection() {
 
       {/* Source Code Products  */}
       <h2 className="font-bold text-[20px] my-3">
-        Source Code
+        Vintage
         <span
           className="font-normal text-[14px]
          float-right text-primary flex 

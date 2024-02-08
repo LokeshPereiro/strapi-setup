@@ -10,7 +10,6 @@ import Cart from "./Cart";
 function Header() {
   const { user } = useUser();
   const [isLogin, setIsLogin] = useState();
-
   const [openCart, setOpenCart] = useState(false);
   const { cart, setCart } = useContext(CartContext);
   // console.log(cart);
@@ -29,6 +28,7 @@ function Header() {
   useEffect(() => {
     setOpenCart(true);
   }, [cart]);
+
   /**
    * Get the cart Data from backend
    */
@@ -36,18 +36,20 @@ function Header() {
   const getCartItem = () => {
     GlobalApi.getUserCartItems(user.primaryEmailAddress.emailAddress).then(
       (resp) => {
-        const result = resp.data.data;
+        const result = resp?.data.data;
         // console.log(result);
-        result &&
-          result.forEach((prd) => {
-            setCart((cart) => [
-              ...cart,
-              {
-                id: prd.id,
-                product: prd.attributes.product.data.attributes,
-              },
-            ]);
-          });
+
+        result.forEach((prd) => {
+          setCart((cart) => [
+            ...cart,
+            {
+              id: prd?.id,
+              product: prd?.attributes?.products?.data[0],
+            },
+          ]);
+
+          // console.log(prd);
+        });
       }
     );
   };
